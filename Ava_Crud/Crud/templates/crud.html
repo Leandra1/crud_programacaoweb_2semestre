@@ -16,7 +16,9 @@
             <td> {{i.email}}</td>
             <td> {{i.fone}}</td>
             <td> {{i.data_nascimento}}</td>
+            <td> <a href="{% url 'update' i.id %}"> Atualizar</a> </td>
         </tr>
+        
         {% endfor %}
     </table>
 </body>

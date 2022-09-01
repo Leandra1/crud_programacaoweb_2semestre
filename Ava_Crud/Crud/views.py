@@ -29,7 +29,15 @@ def ReadAluno (request):
     return render(request,'crud.html', conteudo)
 
 
+def UpdateAluno (request, id):
+    aluno = Aluno.objects.get(pk=id)
+    form = AlunoForm(request.POST or None, instance=aluno)
+    if form.is_valid() :
+        form.save()
+        return redirect("/teste") #mudar
 
+    conteudo = {"formulario": form}
+    return render(request, 'create_aluno.html', conteudo)
 
 
 #------CRUD TABELA CURSO

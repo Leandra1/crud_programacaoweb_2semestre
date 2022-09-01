@@ -21,5 +21,6 @@ urlpatterns = [
     path('createaluno/', CreateAluno, name="adicionaraluno"),
     path('createcurso/', CreateCurso, name="adicionarcurso"),
     path('crudtabelas/', ReadAluno, name="listar"),
+    path('updatetabelas/<int:id>', UpdateAluno, name="update"),
     path('teste/', teste),
 ]
