@@ -8,7 +8,7 @@ class Aluno (models.Model):
     nome = models.CharField(max_length=50)
     email = models.EmailField(max_length=50)
     fone = models.CharField(max_length=11)
-    data_nascimento = models.DateField()
+    data_nascimento = models.DateTimeField()
 
     def __str__(self):
         return self.nome

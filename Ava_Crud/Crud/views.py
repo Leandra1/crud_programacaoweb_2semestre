@@ -22,6 +22,11 @@ def CreateAluno (request):
     return render(request, 'create_aluno.html', conteudo)
 
 
+def ReadAluno (request):
+    aluno = Aluno.objects.all()
+    conteudo = {"alunos":aluno}
+
+    return render(request,'crud.html', conteudo)
 
 
 

@@ -20,5 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('createaluno/', CreateAluno, name="adicionaraluno"),
     path('createcurso/', CreateCurso, name="adicionarcurso"),
+    path('crudtabelas/', ReadAluno, name="listar"),
     path('teste/', teste),
 ]
