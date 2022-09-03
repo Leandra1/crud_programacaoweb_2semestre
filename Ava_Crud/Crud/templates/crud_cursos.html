@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Informações dos cursos {% endblock %}
+
+
+{% block 'titulo_conteudo' %} <h1 class="mt-4">Informações dos cursos </h1>{% endblock %}
+
+{% block 'add_item' %}
+<a href="{% url 'adicionarcurso' %}" class="btn btn-primary">  <img src="{% static '/assets/img/plus-circle.svg' %}" class="svg-inline--fa fa-chart-area me-1" >Adicionar curso</a>
+{% endblock %}
+
+{% block 'tabela' %}
+
+    <thead>
+
+        <tr>
+            <th>Nome</th>
+            <th>Requisito</th>
+            <th>Carga horária</th>
+            <th>Preço</th>   
+        </tr>
+
+    </thead>
+
+    {% for i in cursos%}
+
+    <tbody>
+        <tr>
+            <td> {{i.nome}}</td>
+            <td> {{i.requisito}}</td>
+            <td> {{i.carga_horaria}}</td>
+            <td> {{i.preco}}</td>
+            <td> <a href="{% url 'updatecursos' i.id %}"> <img src="{% static '/assets/img/pencil.svg' %}" class="svg-inline--fa fa-chart-area me-1"> </a></td>
+            <td> <a href="{% url 'deletetecursos' i.id %}"> <img src="{% static '/assets/img/trash.svg' %}" class="svg-inline--fa fa-chart-area me-1"> </a></td>
+        </tr>
+
+    </tbody>
+
+    {% endfor%}
+
+{% endblock %}

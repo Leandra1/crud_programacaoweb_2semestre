@@ -6,7 +6,7 @@ class AlunoForm (ModelForm):
     
     class Meta:
         model = Aluno
-        fields = ('cpf','nome','email','fone','data_nascimento')
+        fields = ('nome','cpf','email','fone','data_nascimento')
         widgets = {
             'data_nascimento' : NumberInput(attrs={'type':'date'})
         }

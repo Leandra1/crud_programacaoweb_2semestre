@@ -18,9 +18,17 @@ from django.urls import path
 from Crud.views import * 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('createaluno/', CreateAluno, name="adicionaraluno"),
-    path('createcurso/', CreateCurso, name="adicionarcurso"),
-    path('crudtabelas/', ReadAluno, name="listar"),
-    path('updatetabelas/<int:id>', UpdateAluno, name="update"),
-    path('teste/', teste),
+    path('createaluno/', createAluno, name="adicionaraluno"),
+    path('readalunos/', readAluno, name="listaralunos"),
+    path('updatealunos/<int:id>', updateAluno, name="updatealunos"),
+    path('deletealunos/<int:id>', deleteAluno, name="deletea"),
+
+
+    path('createcurso/', createCurso, name="adicionarcurso"),
+    path('readcursos/', readCurso, name="readcursos"),
+    path('updatecursos/<int:id>', updateCursos, name="updatecursos"),
+    path('deletetecursos/<int:id>', deleteCursos, name="deletetecursos"),
+
+
+    path('home/', home, name="home"),
 ]

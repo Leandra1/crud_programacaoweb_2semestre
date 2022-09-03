@@ -3,8 +3,8 @@ from django.shortcuts import render,redirect
 from .form import * 
 
 # Create your views here.
-def teste (request):
-    return HttpResponse("Aqui")
+def home (request):
+    return render(request, "home.html")
 
 
 
@@ -12,41 +12,72 @@ def teste (request):
 
 #----- CRUD TABLE ALUNO 
 
-def CreateAluno (request):
+def createAluno (request):
     form = AlunoForm(request.POST or None)
     if form.is_valid() :
         form.save()
-        return redirect("/teste") #mudar
+        return redirect("/readalunos") #mudar
 
     conteudo = {"formulario": form}
     return render(request, 'create_aluno.html', conteudo)
 
 
-def ReadAluno (request):
+def readAluno (request):
     aluno = Aluno.objects.all()
     conteudo = {"alunos":aluno}
 
-    return render(request,'crud.html', conteudo)
+    return render(request,'crud_alunos.html', conteudo)
 
 
-def UpdateAluno (request, id):
+def updateAluno (request, id):
     aluno = Aluno.objects.get(pk=id)
     form = AlunoForm(request.POST or None, instance=aluno)
     if form.is_valid() :
         form.save()
-        return redirect("/teste") #mudar
+        return redirect("/readalunos") #mudar
 
     conteudo = {"formulario": form}
     return render(request, 'create_aluno.html', conteudo)
 
 
+def deleteAluno(request,id):
+    aluno = Aluno.objects.get(pk=id)
+    aluno.delete()
+    return redirect("/readalunos")
+
+
 #------CRUD TABELA CURSO
 
-def CreateCurso (request):
+def createCurso (request):
     form = CursoForm(request.POST or None)
     if form.is_valid() :
         form.save()
-        return redirect("/teste") #mudar
+        return redirect("/readcursos") #mudar
 
     conteudo = {"curso": form}
     return render(request, 'create_curso.html', conteudo)
+
+
+def readCurso (request):
+    curso = Curso.objects.all()
+    conteudo = {"cursos": curso}
+
+    return render(request, 'crud_cursos.html', conteudo)
+
+
+def updateCursos (request, id):
+    curso = Curso.objects.get(pk=id)
+    form = CursoForm(request.POST or None, instance = curso)
+    if form.is_valid() :
+        form.save()
+        return redirect("/readcursos")
+    
+    conteudo = {"curso": form}
+    return render(request, 'create_curso.html', conteudo)
+
+
+def deleteCursos (request, id):
+     curso = Curso.objects.get(pk=id)
+     curso.delete()
+
+     return redirect("/readcursos")
