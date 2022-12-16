@@ -25,6 +25,8 @@ urlpatterns = [
 
 
     path('createcurso/', createCurso, name="adicionarcurso"),
+    path('listagemcurso/', listagem, name="listagemcurso"),
+    path('componentes/', componentes, name="componentes"),
     
     path('', home, name="home"),
 ]
