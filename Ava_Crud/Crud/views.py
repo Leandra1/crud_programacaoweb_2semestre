@@ -52,32 +52,7 @@ def createCurso (request):
     form = CursoForm(request.POST or None)
     if form.is_valid() :
         form.save()
-        return redirect("/readcursos") #mudar
+        return redirect("/readcursos") 
 
     conteudo = {"curso": form}
     return render(request, 'create_curso.html', conteudo)
-
-
-def readCurso (request):
-    curso = Curso.objects.all()
-    conteudo = {"cursos": curso}
-
-    return render(request, 'crud_cursos.html', conteudo)
-
-
-def updateCursos (request, id):
-    curso = Curso.objects.get(pk=id)
-    form = CursoForm(request.POST or None, instance = curso)
-    if form.is_valid() :
-        form.save()
-        return redirect("/readcursos")
-    
-    conteudo = {"curso": form}
-    return render(request, 'create_curso.html', conteudo)
-
-
-def deleteCursos (request, id):
-     curso = Curso.objects.get(pk=id)
-     curso.delete()
-
-     return redirect("/readcursos")
