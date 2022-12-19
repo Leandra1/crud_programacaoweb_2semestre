@@ -1,0 +1,42 @@
+{% extends 'base.html' %} {% block content %} {% block content %}
+<div class="container">
+  <div class="col-md-18">
+    {% if query %}
+    <h2>
+      {% with results.count as total_results %} {{ total_results }} Registro(s)
+      Encontrado(s)!!! {% endwith %}
+    </h2>
+    <div class="row">
+      <div class="col-sm-18">
+        <h4 class="text-center alert alert-info">
+          Listagem dos Registros Encontrados
+        </h4>
+        {% if results %}
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Email</th>
+              <th>Telefone</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for reg in results %}
+            <tr>
+              <td>{{reg.nome}}</td>
+              <td>{{reg.email}}</td>
+              <td>{{reg.telefone}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+        <h4>Sem Registros</h4>
+        {% endif %}
+        <a href="{% url 'home' %}" class="btn btn-warning">Retornar </a>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
