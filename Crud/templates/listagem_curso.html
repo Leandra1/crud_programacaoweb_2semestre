@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Listagem dos Cursos {% endblock %}
+
+
+{% block 'titulo_conteudo' %} <h1 class="mt-4">Listagem dos Cursos </h1>{% endblock %}
+{% block 'add_item' %}
+<a href="{% url 'adicionarcurso' %}" class="btn btn-primary">  <img src="{% static '/assets/img/plus-circle.svg' %}" class="svg-inline--fa fa-chart-area me-1" >Adicionar curso</a>
+{% endblock %}
+
+{% block 'tabela' %}
+
+        <thead>
+
+            <tr>
+                <th>Nome</th>
+                <th>Requisitos</th>
+                <th>Carga Horária</th>
+                <th>Preço</th>
+                
+            </tr>
+
+        </thead>
+
+        {% for i in cursos%}
+
+        <tbody>
+
+            <tr>
+                <td> {{i.nome}}</td>
+                <td> {{i.requisito}}</td>
+                <td> {{i.carga_horaria}}</td>
+                <td> R$ {{i.preco}}</td>
+    
+            </tr>
+
+        </tbody>
+      
+        
+        {% endfor %}
+
+{% endblock %}
